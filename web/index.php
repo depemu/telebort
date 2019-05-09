@@ -2,24 +2,12 @@
 
 require('../vendor/autoload.php');
 
-$app = new Silex\Application();
-$app['debug'] = true;
+$botUsername = '@telebortbot';
+$botToken = '750295559:AAHFZuX98qhYlCwroJppnMmbQ1w4EfJ4vMs';
 
-// Register the monolog logging service
-$app->register(new Silex\Provider\MonologServiceProvider(), array(
-  'monolog.logfile' => 'php://stderr',
-));
+include dirname(__FILE__) . '/private/functions.php';
+include dirname(__FILE__) . '/private/telegram.php';
 
-// Register view rendering
-$app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/views',
-));
-
-// Our web handlers
-
-$app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
-});
-
-$app->run();
+$entityBody = file_get_contents('php://input');
+$receivedMessage = json_decode($entityBody, true);
+processMessage($receivedMessage);
