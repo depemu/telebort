@@ -2,8 +2,8 @@
 
 require('../vendor/autoload.php');
 
-$botUsername = '@telebortbot';
-$botToken = '750295559:AAHFZuX98qhYlCwroJppnMmbQ1w4EfJ4vMs';
+$botUsername = 'YOUR_BOT_USERNAME';
+$botToken = 'YOUR_BOT_TOKEN';
 
 include dirname(__FILE__) . '/private/functions.php';
 include dirname(__FILE__) . '/private/telegram.php';
