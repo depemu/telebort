@@ -1,5 +1,6 @@
 vendor/
 .env
+.etc
 
 .DS_STORE
 .DS_Store
